@@ -77,8 +77,8 @@ module.exports = (app, channel) => {
 
              //here CUSTOMER_BINDING_KEY because add/delete wishlist is a customer event
             PublishMessage(channel, CUSTOMER_BINDING_KEY, JSON.stringify(data))
-            
-            return res.status(200).json(data.data.products);
+            console.log("-----",data);
+            return res.status(200).json(data.data.product);
         } catch (err) {
             
         }

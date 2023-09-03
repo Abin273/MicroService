@@ -91,6 +91,7 @@ module.exports.SubscribeMessage = async (channel, service) => {
 		channel.bindQueue(appQueue.queue, EXCHANGE_NAME, SHOPPING_BINDING_KEY);
 		channel.consume(appQueue.queue, (msg) => {
 			console.log(`Received in shopping service: ${msg.content.toString()}`);
+      service.SubscribeEvents(msg.content.toString())
 			channel.ack(msg);
 		});
 	} catch (error) {
