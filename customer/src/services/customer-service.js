@@ -142,6 +142,7 @@ class CustomerService {
         }
     }
 
+    // like rabbitMQ,kafka,nats
     async SubscribeEvents(payload){
  
         payload = JSON.parse(payload)

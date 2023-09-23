@@ -1,6 +1,6 @@
 FROM node
 
-WORKDIR /shopping
+WORKDIR /app/shopping
 
 COPY package.json .
 
@@ -12,4 +12,4 @@ COPY . .
 
 EXPOSE 8003
 
-CMD ["npm", "run","dev"]
+CMD ["npm","start"]

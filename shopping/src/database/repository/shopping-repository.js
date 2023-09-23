@@ -116,6 +116,7 @@ class ShoppingRepository {
                         items: cartItems
                     })
         
+                    // cart items will be empty after creating an order
                     cart.items = [];
                     
                     

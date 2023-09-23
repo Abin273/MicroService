@@ -2,11 +2,11 @@ const CustomerService = require("../services/customer-service");
 const UserAuth = require("./middlewares/auth");
 const {SubscribeMessage} = require('../utils')
 
-//routesa are defined here 
+//routes are defined here 
 module.exports = (app, channel) => {
   const service = new CustomerService();
 
-    // subscribing to an event
+    // subscribing to messages
   SubscribeMessage(channel, service)
 
   app.post("/signup", async (req, res, next) => {
@@ -25,6 +25,8 @@ module.exports = (app, channel) => {
 
       const { data } = await service.SignIn({ email, password });
 
+      console.log(data);
+      
       return res.json(data);
     } catch (err) {
       next(err);
@@ -54,10 +56,6 @@ module.exports = (app, channel) => {
     try {
       const { _id } = req.user;
       const { data } = await service.GetProfile({ _id });
-      // console.log("-------------------------");
-
-      // console.log(data,"//////////////");
-      // console.log("-------------------------");
       return res.json(data);
     } catch (err) {
       next(err);
